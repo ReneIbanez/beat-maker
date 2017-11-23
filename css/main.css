@@ -16,7 +16,7 @@
       box-sizing: border-box; /* IE */
  }
 html {
-    color: #222;
+    color: black;
     font-size: 1em;
     line-height: 1.4;
 }
@@ -110,11 +110,7 @@ textarea {
        border: none;
 
    }
-
-
-
-
-   #category button:hover {
+#category button:hover {
      background-color: #e85f6f;
      margin-left: 30px;
 
@@ -202,16 +198,12 @@ textarea {
    font-size: 34px;
    }
 
-
-
-
-
-   #notes .wrapper{
-     border: 5px solid #C7C7F5;
-     display: flex;
-     flex-flow: nowrap;
-     margin-top: 32px;
-     background: #b17b7b;
+#notes .wrapper{
+  border: 5px solid #C7C7F5;
+  display: flex;
+  flex-flow: nowrap;
+  margin-top: 32px;
+  background: #b17b7b;
 
    }
 
@@ -257,12 +249,6 @@ article{
   width: 100%;
   float: left;
 }
-
-
-
-
-
-
 h3{
   margin-left: 35px;
 color: white;
@@ -271,22 +257,14 @@ display: none;
 }
 
 
-
-
-
-
-
 h1{
-    margin-left: 35%;
     font-size: 60px;
-    color: white;
+    display: inline-block;
+    margin: 0 auto;
     font-family: monospace;
-}
-
-
-
-
-
+    float: left;
+    text-shadow: 0 0 0.2em #F87, 0 0 0.2em #F87;
+  }
 h2{
   margin-left: 31%;
   font-size: 61px;
@@ -454,17 +432,6 @@ h2{
   MARGIN: 0px 33%;
   font-family: monospace;
   text-shadow: 0 0 0.2em #F87, 0 0 0.2em #F87}
-}
-
-
-
-
-h1{
-    margin-left: 35%;
-    font-size: 60px;
-    color: black;
-    font-family: monospace;
-    text-shadow: 0 0 0.2em #F87, 0 0 0.2em #F87}
 }
 
 }

@@ -1,19 +1,24 @@
-var n0= [];
 // var activeBox = box1;
-var metronome_beat =[" "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," ",];
+var metronome_beat = []
+var tracks = [];
+var resolution = 20;
 // set my bpm threw the noteItems
 var bpm = +$("#bpm").val();
-var count = 0;
+var beat = 0;
 var playing = false;
-var tick;
+var metronome;
+var beatInterval;
 var note = 0;
-
-
+var beginning = Date.now()
+var currentBeatTime =(Date.now()- beginning)%16000;
+// all this is doing setting the math
+var getCurrentBeat = ()=>
+  (Date.now()- beginning)%16000;
 
 // set your bpm
 // set the tempo
 $("#bpm").on("input",function(){
-  clearInterval(tick);
+  clearInterval(metronome);
   bpm = $("#bpm").val();
   console.log(bpm);
   //  setInterval(updateMetronome, (60000/bpm));
@@ -21,15 +26,30 @@ $("#bpm").on("input",function(){
 
 //this is the metronome bar
 function updateMetronome(){
-  console.log("hi");
-  $("#note"+ count).toggleClass("metronomeActive");
-  playSound("sounds/clap-hit:bings/hihat-808.wav");
+  // console.log("hi");
+  $("#note"+ beat).toggleClass("metronomeActive");
+   playSound("sounds/clap-hit:bings/hihat-808.wav");
   $("#metronome").css("background-color","null");
-  count++;
-if(count ==16){
-   count= 0;
-  }
+  playSound('sounds/'+metronome_beat[beat])
+    beat++;
+    if(beat ==16){
+       beat = 0;
+    }
+
 }
+
+function playBeats(){
+
+  var time = getCurrentBeat()
+  var beatsToPlay = metronome_beat.filter(beat => {
+    return beat.time > time && beat.time < time + resolution;
+  });
+  beatsToPlay.forEach(beat =>{
+    playSound("sounds/"+beat.filename)
+  })
+}
+
+
 function playSound(fileName){
   var sound= new Howl({
     src:[fileName],
@@ -41,43 +61,21 @@ function playSound(fileName){
   //if spacebar is pressed, start
   $(document).keydown(function(e){
     if(e.which== 32){
-  console.log("tick",tick)
-      if(tick){
-        clearInterval(tick)
-        tick = null;
-      }else {
-        tick = setInterval(updateMetronome, 60000/bpm);
+  // console.log("metronome",metronome)
+      if(metronome){
+        clearInterval(metronome)
+        metronome = null;
+        clearInterval(beatInterval)
+      } else {
+        metronome = setInterval(updateMetronome, 60000/bpm);
+        beatInterval=setInterval(playBeats , resolution);
+        beginning = Date.now();
         //in here we need to push sound or key to an array to hold that key
         console.log(bpm)
 
       }
     }
 });
-// initially set keys rec function
-$(document).keydown(function(e){
-  // rec button \\
-  if(e.which== 220){
-    console.log("clicked");
-    setInterval(function(){
-      playSound(n0[note])
-      note++;
-      if(note>n0.length){
-        console.log("finished");
-        note= 0;
-      }
-    },3000);
-  }
-});
-
-
-
-
-// });
-//lil_bit_keyboard['Q'] is equal to 'g_sp_125_19'
-// this object is just storing the names of the audio files
-// objects use key value pairs in the form of key:value
-// in this case Q is they key and 'g_sp_125_19' is the value
-// you can look up the value of any given key using lil_bit_keyboard['key']
 
 
 //container
@@ -294,319 +292,69 @@ $(".keyboard-selector").on("click",function(e){
 $(document).keydown(function(e) {
   //e.which is charictor code and we turn it into string, and it gets stored in a veriable key
   var key = String.fromCharCode(e.which)
+
   //getting the file name, ....[] is being used to find the correct file
   var filename = keyboard_profiles[active_keyboard][key]
-  metronome_beat[count]= filename;
+  var beat_obj = {
+    filename: filename,
+    time: getCurrentBeat(),
+  }
+  metronome_beat.push(beat_obj);
+
+  //push to tracks
+  let track_id = active_keyboard + " - " + filename
+
+
+  push_to_track(track_id, beat_obj)
+
+
+  // metronome_beat[beat]= filename;
   playSound("sounds/"+ filename);
 });
-    // $(document).keydown(function(e) {
-    //   if (e.which== 81) { //key id Q
-    //     playSound("sounds/g_sp_125_19.wav");
-    //     $("#key-q").css("background-color","red");
-    //   }
-    //   else if (e.which== 87) { // key id W
-    //     playSound("sounds/shaker-analog.wav");
-    //     $("#key-w").css("background-color","red");
-    //   }
-    //   else if (e.which== 65 ) { // key id A
-    //     playSound("sounds/clap-analog.wav");
-    //     $("#key-a").css("background-color","red");
-    //   }
-    //   else if(e.which== 90){ // key Z
-    //     playSound("sounds/clap-fat.wav");
-    //     $("#key-z").css("background-color","red");
-    //   }
-    //   else if(e.which== 83){// key id s
-    //     playSound("sounds/clap-808.wav");
-    //     $("#key-s").css("background-color","red");
-    //   }
-    //   else if(e.which== 88){// key id X
-    //     playSound("sounds/clap-crushed.wav");
-    //     $("#key-x").css("background-color","red");
-    //   }
-    //   else if(e.which== 69){//key id E
-    //     playSound("sounds/shaker-suckup.wav");
-    //     $("#key-e").css("background-color","red");
-    //   }
-    //   else if(e.which== 68){ //key id D
-    //     playSound("sounds/clap-tape.wav");
-    //     $("#key-d").css("background-color","red");
-    //   }
-    //   else if(e.which== 82){// key id R
-    //     playSound("sounds/crash-noise.wav");
-    //     $("#key-r").css("background-color","red");
-    //   }
-    //   else if(e.which== 86){ //key id V
-    //     playSound("sounds/crash-808.wav");
-    //     $("#key-v").css("background-color","red");
-    //   }
-    //   else if(e.which== 66){ // key id B
-    //     playSound("sounds/hihat-ring.wav");
-    //     $("#key-b").css("background-color","red");
-    //   }
-    //   else if(e.which== 67){// key id C
-    //     playSound("sounds/d-block-sound1-qbh.wav");
-    //     $("#key-c").css("background-color","red");
-    //   }
-    //   else if(e.which== 77){// key id M
-    //     playSound("sounds/ride-acoustic01.wav");
-    //     $("#key-m").css("background-color","red");
-    //   }
-    //   else if(e.which== 72){//key id H
-    //     playSound("sounds/kick-big.wav");
-    //     $("#key-h").css("background-color","red");
-    //   }
-    //   else  if(e.which== 85){// key id U
-    //     playSound("sounds/PIANO_do5.wav");
-    //     $("#key-u").css("background-color","red");
-    //   }
-    //   else if(e.which== 78){// key id N
-    //     playSound("sounds/kick-floppy.wav");
-    //     $("#key-n").css("background-color","red");
-    //   }
-    //   else if(e.which== 74){//Key id J
-    //     playSound("sounds/kick-floppy.wav");
-    //     $("#key-j").css("background-color","red");
-    //   }
-    //   else  if(e.which== 73){// key id I
-    //     playSound("sounds/PIANO_lab3.wav");
-    //     $("#key-i").css("background-color","red");
-    //   }
-    //   else if(e.which== 75){// key id K
-    //     playSound("sounds/PIANO_lab4.wav");
-    //     $("#key-k").css("background-color","red");
-    //   }
-    //   else  if(e.which== 79){// key od O
-    //     playSound("sounds/PIANO_Mi0.wav");
-    //     $("#key-o").css("background-color","red");
-    //   }
-    //   else  if(e.which== 76){// key id L
-    //     playSound("sounds/PIANO_Mib4.wav");
-    //     $("#key-l").css("background-color","red");
-    //   }
-    //   else  if(e.which== 71){// key id G
-    //     playSound("sounds/kick-oldschool.wav");
-    //     $("#key-g").css("background-color","red");
-    //   }
-    //   else  if(e.which== 84){// key id T
-    //     playSound("sounds/259[kb]fukubass2.aif.mp3");
-    //     $("#key-t").css("background-color","red");
-    //   }
-    //   else  if(e.which== 89){// key is Y
-    //     playSound("sounds/PIANO_re2.wav");
-    //     $("#key-y").css("background-color","red");
-    //   }
-    //   else  if(e.which== 80){// key P
-    //     playSound("sounds/Gd pno A1 (R).wav");
-    //     $("#key-p").css("background-color","red");
-    //   }
-    //   else  if(e.which== 70){//key id F
-    //     playSound("sounds/423[kb]bass-rolly-down-up.wav.mp3");
-    //     $("#key-f").css("background-color","red");
-    //   }
-    //   else  if(e.which== 89){ //key is Y
-    //     playSound("sounds/.wav");
-    //     $("#key-y").css("background-color","red");
-    //   }
-    //
-    // });
 
 
-//set up an onclick so when get click the is all Base
- // $("base").on("click", function(){
- //
- // });
+function push_to_track(track_id, beat_obj){
+  ensure_track(track_id).beats.push(beat_obj)
+  console.log(tracks)
+}
 
+// ensure track takes a track id and always returns a refrence to that track
+// if that track does not exist yet, it is created and a refrence is returned
 
+function ensure_track(track_id){
+  let track_ref = undefined
+  if(tracks.length){
+    for(var i = 0, l = tracks.length; i < l; i++){
+      if(tracks[i].track_id == track_id)
+        track_ref = tracks[i]
+    }
+  }//if not track length or if theirs no track on the line of code 324 -327 then its know tomake a new =one
+  // if the tracks array is empty or if we didnt find a track with the desired track id in the loop above, we make a new one
+  if(!tracks.length || !track_ref){
+    let new_track = {
+      track_id:track_id,
+      beats:[]
+    }
+    tracks.push(new_track)
+    track_ref = new_track
+  }
 
-// rember your key map is gana have a function that connects your key down function
-// }else{
-    // $(document).keydown(function(e) {
-    //   if (e.which== 81) { //key id Q
-    //     playSound("sounds/perc-808.wav");
-    //     $(keymap).css("background-color","red");
-    //     if($("#record").hasClass("recordToggle")){
-    //       n0.push("sounds/perc-808.wav");
-    //     }
-    //   }
-    //   else if (e.which== 87) { // key id W
-    //     playSound("sounds/shaker-analog.wav");
-    //     $("#key-w").css("background-color","red");
-    //     if($("#record").hasClass("recordToggle")){
-    //       n0.push("sounds/shaker-analog.wav");
-    //     }
-    //   }
-    //   else if (e.which== 65 ) { // key id A
-    //     playSound("sounds/snare-pinch.wav");
-    //     $("#key-a").css("background-color","red");
-    //     if($("#record").hasClass("recordToggle")){
-    //       n0.push("sounds/clap-fat.wav");
-    //     }
-    //
-    //   }
-    //   else if(e.which== 90){ // key Z
-    //     playSound("sounds/clap-tape.wav");
-    //     $("#key-z").css("background-color","red");
-    //     if($("#record").hasClass("recordToggle")){
-    //       n0.push("sounds/clap-tape.wav");
-    //     }
-    //   }
-    //   else if(e.which== 83){// key id s
-    //     playSound("sounds/clap-808.wav");
-    //     $("#key-s").css("background-color","red");
-    //     if($("#record").hasClass("recordToggle")){
-    //       n0.push("sounds/clap-808.wav");
-    //     }
-    //   }
-    //   else if(e.which== 88){// key id X
-    //     playSound("sounds/d-block-trumpet1-qbh.wav");
-    //     $("#key-x").css("background-color","red");
-    //     if($("#record").hasClass("recordToggle")){
-    //       n0.push("sounds/d-block-trumpet1-qbh.wav");
-    //     }
-    //   }
-    //   else if(e.which== 69){//key id E
-    //     playSound("sounds/kick-tron.wav");
-    //     $("#key-e").css("background-color","red");
-    //     if($("#record").hasClass("recordToggle")){
-    //       n0.push("sounds/kick-tron.wav");
-    //     }
-    //   }
-    //   else if(e.which== 68){ //key id D
-    //     playSound("sounds/snare-block.wav");
-    //     $("#key-d").css("background-color","red");
-    //     if($("#record").hasClass("recordToggle")){
-    //       n0.push("sounds/clap-slappper.wav");
-    //     }
-    //   }
-    //   else if(e.which== 82){// key id R
-    //     playSound("sounds/crash-noise.wav");
-    //     $("#key-r").css("background-color","red");
-    //     if($("#record").hasClass("recordToggle")){
-    //       n0.push("sounds/crash-noise.wav");
-    //     }
-    //   }
-    //   else if(e.which== 86){ //key id V
-    //     playSound("sounds/g_tdd_120_10.wav");
-    //     $("#key-v").css("background-color","red");
-    //     if($("#record").hasClass("recordToggle")){
-    //       n0.push("sounds/crash-808.wav");
-    //     }
-    //   }
-    //   else if(e.which== 66){ // key id B
-    //     playSound("sounds/hihat-ring.wav");
-    //     $("#key-b").css("background-color","red");
-    //     if($("#record").hasClass("recordToggle")){
-    //       n0.push("sounds/hihat-ring.wav");
-    //     }
-    //   }
-    //   else if(e.which== 67){// key id C
-    //     playSound("sounds/hihat-digital.wav");
-    //     $("#key-c").css("background-color","red");
-    //     if($("#record").hasClass("recordToggle")){
-    //       n0.push("sounds/hihat-digital.wav");
-    //     }
-    //   }
-    //   else if(e.which== 77){// key id M
-    //     playSound("sounds/my_face.mp3");
-    //     $("#key-m").css("background-color","red");
-    //     if($("#record").hasClass("recordToggle")){
-    //       n0.push("sounds/my_face.mp3");
-    //     }
-    //   }
-    //   else if(e.which== 72){//key id H
-    //     playSound("sounds/kick-big.wav");
-    //     $("#key-h").css("background-color","red");
-    //     if($("#record").hasClass("recordToggle")){
-    //       n0.push("sounds/kick-big.wav");
-    //     }
-    //   }
-    //   else  if(e.which== 85){// key id U
-    //     playSound("sounds/PIANO_do5.wav");
-    //     $("#key-u").css("background-color","red");
-    //     if($("#record").hasClass("recordToggle")){
-    //       n0.push("sounds/PIANO_do5.wav");
-    //     }
-    //   }
-    //   else if(e.which== 78){// key id N
-    //     playSound("sounds/kick-floppy.wav");
-    //     $("#key-n").css("background-color","red");
-    //     if($("#record").hasClass("recordToggle")){
-    //       n0.push("sounds/kick-floppy.wav");
-    //     }
-    //   }
-    //   else if(e.which== 74){//Key id J
-    //     playSound("sounds/kick-gritty.wav");
-    //     $("#key-j").css("background-color","red");
-    //     if($("#record").hasClass("recordToggle")){
-    //       n0.push("sounds/kick-gritty.wav");
-    //     }
-    //   }
-    //   else  if(e.which== 73){// key id I
-    //     playSound("sounds/PIANO_lab3.wav");
-    //     $("#key-i").css("background-color","red");
-    //     if($("#record").hasClass("recordToggle")){
-    //       n0.push("sounds/PIANO_lab3.wav");
-    //     }
-    //   }
-    //   else if(e.which== 75){// key id K
-    //     playSound("sounds/PIANO_lab4.wav");
-    //     $("#key-k").css("background-color","red");
-    //     if($("#record").hasClass("recordToggle")){
-    //       n0.push("sounds/PIANO_lab4.wav");
-    //     }
-    //   }
-    //   else  if(e.which== 79){// key od O
-    //     playSound("sounds/PIANO_Mi0.wav");
-    //     $("#key-o").css("background-color","red");
-    //     if($("#record").hasClass("recordToggle")){
-    //       n0.push("sounds/PIANO_Mi0.wav");
-    //     }
-    //   }
-    //   else  if(e.which== 76){// key id L
-    //     playSound("sounds/PIANO_Mib4.wav");
-    //     $("#key-l").css("background-color","red");
-    //     if($("#record").hasClass("recordToggle")){
-    //       n0.push("sounds/PIANO_Mib4.wav");
-    //     }
-    //   }
-    //   else  if(e.which== 71){// key id G
-    //     playSound("sounds/kick-stomp.wav");
-    //     $("#key-g").css("background-color","red");
-    //     if($("#record").hasClass("recordToggle")){
-    //       n0.push("sounds/kick-stomp.wav");
-    //     }
-    //   }
-    //   else  if(e.which== 84){// key id T
-    //     playSound("sounds/259[kb]fukubass2.aif.mp3");
-    //     $("#key-t").css("background-color","red");
-    //     if($("#record").hasClass("recordToggle")){
-    //       n0.push("sounds/259[kb]fukubass2.aif.mp3");
-    //     }
-    //   }
-    //   else  if(e.which== 89){// key is Y
-    //     playSound("sounds/PIANO_re2.wav");
-    //     $("#key-y").css("background-color","red");
-    //     if($("#record").hasClass("recordToggle")){
-    //       n0.push("sounds/PIANO_re2.wav");
-    //     }
-    //   }
-    //   else  if(e.which== 80){ //key is p
-    //     playSound("sounds/d-block-piano1-qbh.wav");
-    //     $("#key-p").css("background-color","red");
-    //     if($("#record").hasClass("recordToggle")){
-    //       n0.push("sounds/d-block-piano1-qbh.wav");
-    //     }
-    //
-    //   }
-    //   else  if(e.which== 70){//key id F
-    //     playSound("sounds/423[kb]bass-rolly-down-up.wav.mp3");
-    //     $("#key-f").css("background-color","red");
-    //     if($("#record").hasClass("recordToggle")){
-    //       n0.push("sounds/423[kb]bass-rolly-down-up.wav.mp3");
-    //     }
-    //   }else if (e.which==13) {
-    //     $('#record').toggleClass("recordToggle");
-    //   }
-    //
-    // });
+  return track_ref
+
+}
+
+// initially set keys rec function
+// $(document).keydown(function(e){
+//   // rec button \\
+//   if(e.which== 220){
+//     console.log("clicked");
+//     setInterval(function(){
+//       playSound(n0[note])
+//       note++;
+//       if(note>n0.length){
+//         console.log("finished");
+//         note= 0;
+//       }
+//     },3000);
+//   }
+// });
