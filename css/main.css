@@ -120,7 +120,11 @@ textarea {
 
 
    #category{
-     margin-left: 130px;
+     width: 100%;
+     margin: 0 auto;
+     display: inline-block;
+     text-align: center;
+     float: left;
    }
 
 
@@ -136,25 +140,32 @@ textarea {
    }
 
 
+   #keyboard{
+     margin: 0 auto;
+     width: 53%;
+     text-align: center;
+   }
+
 
    #keypadNotes1{
-     width: 79%;
-     margin-left: 93px;
      font-size: 39px;
      display: inline-block;
-     background-color: #e3e3e3;
-     border-radius: 8px
+
    }
 
 
 
    #keypadNotes2{
-     width: 67%;
-     margin-left: 125px;
+     width: 66%;
      font-size: 37px;
      display: inline-block;
-     background-color: #e3e3e3;
   }
+  #keypadNotes3{
+     width: 54%;
+     font-size: 38px;
+     display: inline-block;
+   }
+
 .inactive{
   display: none;
 }
@@ -163,55 +174,28 @@ textarea {
 }
 
 
+#playButton{
+  margin-left: 10%;
+  width: 10%;
+}
 
-   #keypadNotes3{
-     width: 54%;
-     margin-left: 161px;
-     font-size: 38px;
-     display: inline-block;
-     background-color: #e3e3e3;
-   }
-
-
-
-   #playButton{
-       margin-left: 20px;
-   }
-
-
-
-
-   #record{
-
-     margin-left: 40%;
-   }
-
-
-
-   #keypad{
-     width: 53%;
-   display: inherit;
-   float: left;
-   margin-left: 237px;
-   position: relative;
-   top: 100%;
-   font-size: 34px;
-   }
+#record{
+  margin-left: 40%;
+}
 
 #notes .wrapper{
   border: 5px solid #C7C7F5;
   display: flex;
-  flex-flow: nowrap;
-  margin-top: 32px;
-  background: #b17b7b;
-
-   }
+  background: #554b98;
+  text-align: center;
+  margin: 0 auto;
+}
 
 
 
    #notes{
-     width: 100%;
-     margin-left: 8%;
+     /*width: 100%;
+     margin-left: 8%;*/
    }
 
    #record:active {
@@ -259,19 +243,24 @@ display: none;
 
 h1{
     font-size: 60px;
+    width: 100%;
     display: inline-block;
     margin: 0 auto;
+    text-align: center;
     font-family: monospace;
     float: left;
     text-shadow: 0 0 0.2em #F87, 0 0 0.2em #F87;
   }
 h2{
+  float: left;
   margin-left: 31%;
   font-size: 61px;
+  text-align: center;
   color: white;
   MARGIN: 0px 28%;
   font-family: monospace;
-  text-shadow: 0 0 0.2em #F87, 0 0 0.2em #F87}
+  text-shadow: 0 0 0.2em #F87, 0 0 0.2em #F87};
+
 }
 
 
@@ -328,10 +317,12 @@ iframe{
 }
 
 input{
-    line-height: normal;
-    margin-left: 43%;
-    width: 7%;
-    font-size: 45px;
+  line-height: normal;
+  display: inline-block;
+ margin: 0 auto;
+ text-align: center;
+ float: left;
+
 }
 
 

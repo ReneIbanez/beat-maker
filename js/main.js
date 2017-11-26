@@ -107,7 +107,7 @@ keyboard_profiles.lil_bit_keyboard = {
   V : 'piano/Gd pno A2 (R).wav',
   B : 'piano/PF ST  G 4-L(R).wav',
   N : 'guitar/g_tdd_120_02.wav',
-  M : 'fun-file/goodyear.mp3',
+  M : 'fun-file/supsitry.mp3',
 }
 keyboard_profiles.bass_keyboard = {
   Q : 'bass/bass1.mp3',
