@@ -120,12 +120,13 @@ textarea {
 
 
    #category{
-     width: 100%;
-     margin: 0 auto;
-     display: inline-block;
-     text-align: center;
-     float: left;
-   }
+     width: 65%;
+    margin-left: 13%;
+    /* margin: 0 auto; */
+    display: inline-block;
+    text-align: center;
+    float: left;
+}
 
 
 
@@ -141,9 +142,9 @@ textarea {
 
 
    #keyboard{
-     margin: 0 auto;
-     width: 53%;
-     text-align: center;
+    width: 100%;
+    margin:0;
+    padding: 0;
    }
 
 
@@ -310,7 +311,6 @@ iframe{
 .bar{
   display: flex;
   flex-flow: row wrap;
-  justify-content: center;
 }
 .wrapper{
   width: 80%;
