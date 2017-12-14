@@ -136,35 +136,36 @@ textarea {
      /*display: flex;*/
      margin-bottom: 15px;
    }
-   .lil{
-     display: flex;
-   }
 
-
-   #keyboard{
+#keyboard{
     width: 100%;
     margin:0;
     padding: 0;
+    text-align: center;
    }
 
 
-   #keypadNotes1{
-     font-size: 39px;
+#keypadNotes1{
+     font-size: 38px;
+     text-align: center;
      display: inline-block;
+
 
    }
 
 
 
-   #keypadNotes2{
-     width: 66%;
-     font-size: 37px;
+#keypadNotes2{
+     text-align: center;
      display: inline-block;
+     font-size: 38px;
+
   }
   #keypadNotes3{
-     width: 54%;
-     font-size: 38px;
+     text-align: center;
      display: inline-block;
+     font-size: 38px;
+
    }
 
 .inactive{
