@@ -138,17 +138,16 @@ textarea {
    }
 
 #keyboard{
-    width: 100%;
-    margin:0;
-    padding: 0;
-    text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+
    }
 
 
 #keypadNotes1{
      font-size: 38px;
-     text-align: center;
-     display: inline-block;
+
 
 
    }
@@ -156,15 +155,11 @@ textarea {
 
 
 #keypadNotes2{
-     text-align: center;
-     display: inline-block;
-     font-size: 38px;
+  font-size: 38px;
 
   }
-  #keypadNotes3{
-     text-align: center;
-     display: inline-block;
-     font-size: 38px;
+#keypadNotes3{
+  font-size: 38px;
 
    }
 
