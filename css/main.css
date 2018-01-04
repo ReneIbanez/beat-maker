@@ -174,10 +174,10 @@ textarea {
 }
 
 #notes .wrapper{
-  border: 5px solid #C7C7F5;
+  border: 17px solid #929292;
   display: flex;
   justify-content: space-evenly;
-  background: #554b98;
+  background: #2c63cbb5;
   text-align: center;
   margin: 10% 10%;
 }
@@ -196,8 +196,9 @@ textarea {
 
 .playButton-container{
   display: flex;
-  justify-content: space-evenly;
-  margin-bottom: 197;
+  justify-content: center;
+  margin-bottom: 197px;
+  margin-left: -17%;
 }
 
 .recordToggle{
@@ -229,6 +230,13 @@ textarea {
 article{
  width: 100%;
  float: left;
+ margin-top: 10%;
+}
+span{
+  float: left;
+  border: 1px solid #30549e;
+  width: 100%;
+  margin: 29px 0;
 }
 h3{
   margin-left: 35px;
@@ -284,7 +292,7 @@ input{
     text-align: center;
     float: left;
     margin:  50px 0px 0px 26%;
-    font-size: 20px;
+    font-size: 28px;
     padding: 10px 20px;
 }
 
