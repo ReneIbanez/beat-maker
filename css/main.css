@@ -167,10 +167,12 @@ textarea {
 #playButton{
   margin-left: 10%;
   width: 10%;
+  font-size: 25px;
 }
 
 #record{
   margin-left: 40%;
+  font-size: 25px;
 }
 
 #notes .wrapper{
@@ -216,7 +218,7 @@ textarea {
 }*/
 
 .metronomeActive{
-  background-color:#e0c224;
+  background-color:#e4e078;
 }
 .noteItems{
   margin: 7px 12px;
