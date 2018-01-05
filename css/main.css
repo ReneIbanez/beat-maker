@@ -165,13 +165,13 @@ textarea {
 
 
 #playButton{
-  margin-left: 10%;
-  width: 10%;
+  margin-left: 16%;
+  width: 27%;
   font-size: 25px;
 }
 
 #record{
-  margin-left: 40%;
+  margin-left: 0%;
   font-size: 25px;
 }
 
@@ -180,7 +180,6 @@ textarea {
   display: flex;
   justify-content: space-evenly;
   background: #2c63cbb5;
-  text-align: center;
   margin: 10% 10%;
 }
 #record:active {
@@ -225,7 +224,7 @@ textarea {
   width: 25px;
   height: 68px;
   padding-top: 20px;
-  border: 1px solid #f6f6f6;
+  border: 1px solid #8e8e8e;
   border-style: ridge;
 }
 
@@ -236,7 +235,7 @@ article{
 }
 span{
   float: left;
-  border: 1px solid #30549e;
+  border: 2px solid #30549e;
   width: 100%;
   margin: 29px 0;
 }
