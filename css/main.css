@@ -121,6 +121,7 @@ textarea {
   display: inline-block;
   text-align: center;
   float: left;
+  font-size: 20px;
 }
 
 
@@ -140,14 +141,19 @@ textarea {
 
 #keypadNotes1{
      font-size: 32px;
+     padding: 5px 0px;
 }
 
 #keypadNotes2{
   font-size: 32px;
+  padding: 5px 0px;
+
 
 }
 #keypadNotes3{
   font-size: 32px;
+  padding: 5px 0px;
+
 
 }
 
@@ -180,7 +186,7 @@ textarea {
   display: flex;
   justify-content: space-evenly;
   background: #2c63cbb5;
-  margin: 10% 10%;
+  margin: 10% 5%;
 }
 #record:active {
   background-color: red;
@@ -217,7 +223,7 @@ textarea {
 }*/
 
 .metronomeActive{
-  background-color:#e4e078;
+  background-color:#b9ec36;
 }
 .noteItems{
   margin: 7px 12px;
@@ -246,24 +252,23 @@ h3{
   display: none;
 }
 h1{
-    font-size: 60px;
+    font-size: 85px;
     color: silver;
     width: 100%;
     display: inline-block;
     margin: 0 auto;
     text-align: center;
-    font-family: monospace;
+    font-family: fantasy;
     float: left;
     text-shadow: 0 0 0.2em #0028ff, 0 0 0.2em #dae0ff;
   }
 h2{
   float: left;
-  margin-left: 31%;
-  font-size: 61px;
+  font-size: 85px;
   text-align: center;
   color: silver;
-  MARGIN: 0% 27%;
-  font-family: monospace;
+  margin: 0% 25%;
+  font-family: fantasy;
   text-shadow: 0 0 0.2em #0028ff, 0 0 0.2em #dae0ff;
 }
 .playCycle{
@@ -285,7 +290,7 @@ iframe{
   display: flex;
 }
 .wrapper{
-  width: 80%;
+  width: 90%;
 }
 input{
     line-height: normal;
