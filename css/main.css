@@ -137,43 +137,46 @@ textarea {
   margin-top: -5%;
   text-align: center;
 }
-
+#keyboard #keypadNotes1 button{
+  background: #929292;
+}
+#keyboard #keypadNotes2 button{
+  background: #929292;
+}
+#keyboard #keypadNotes3 button{
+  background: #929292;
+}
 
 #keypadNotes1{
-     font-size: 32px;
+     font-size: 40px;
      padding: 5px 0px;
+     opacity: 0.7;
+     color: #2c4f99;
+
 }
 
 #keypadNotes2{
-  font-size: 32px;
+  font-size: 40px;
   padding: 5px 0px;
-
+  opacity: 0.7;
+  color: #2c4f99;
 
 }
+
 #keypadNotes3{
-  font-size: 32px;
+  font-size: 40px;
   padding: 5px 0px;
-
-
+  opacity: 0.7;
+  color: #2c4f99;
 }
-
-.keyboard-selector{
-  background: #373a42;
-    color: #2b6fef;
-}
-
-.inactive{
-  display: none;
-}
-.active{
-  display: block;
-}
-
 
 #playButton{
+  font-size: 40px;
   margin-left: 16%;
-  width: 27%;
-  font-size: 25px;
+  width: 35%;
+  opacity: 0.7;
+  color: #2c4f99;
+  background: #929292;
 }
 
 #record{
@@ -182,10 +185,11 @@ textarea {
 }
 
 #notes .wrapper{
-  border: 17px solid #929292;
+  border: 17px solid #909090;
+  border-style: groove;
   display: flex;
   justify-content: space-evenly;
-  background: #2c63cbb5;
+  background: #000000e6;
   margin: 10% 5%;
 }
 #record:active {
@@ -194,17 +198,31 @@ textarea {
 #playButton:active {
   position:relative;
   top:5px;
+  color: #2c4f99;
+  background: #929292;
 }
 
 #playButton.activate{
   position: relative;
   top: 5px;
 }
+.keyboard-selector{
+  background: #373a42;
+    color: #2b6fef;
+}
+
+.inactive{
+  display: none;
+}
+
+.active{
+  display: block;
+}
 
 .playButton-container{
   display: flex;
   justify-content: center;
-  margin-bottom: 197px;
+  margin-bottom: 35px;
   margin-left: -17%;
 }
 
@@ -230,14 +248,18 @@ textarea {
   width: 25px;
   height: 68px;
   padding-top: 20px;
-  border: 1px solid #8e8e8e;
+  border: 7px solid #626eec;
   border-style: ridge;
+}
+
+.playCycle{
+  background-color: lightblue;
 }
 
 article{
  width: 100%;
  float: left;
- margin-top: 10%;
+ margin-top: 5%;
 }
 span{
   float: left;
@@ -271,10 +293,6 @@ h2{
   font-family: fantasy;
   text-shadow: 0 0 0.2em #0028ff, 0 0 0.2em #dae0ff;
 }
-.playCycle{
-  background-color: lightblue;
-}
-
 
 iframe{
   position: fixed;
