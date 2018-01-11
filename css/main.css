@@ -106,7 +106,7 @@ textarea {
        float: left;
        width: 9%;
        border-radius: 30px;
-       box-shadow: 0 9px #909090;
+       box-shadow: 0 9px #2b42ac;
        border: none;
 }
 #category button:hover {
@@ -138,20 +138,20 @@ textarea {
   text-align: center;
 }
 #keyboard #keypadNotes1 button{
-  background: #929292;
+  background: #acacb394;
 }
 #keyboard #keypadNotes2 button{
-  background: #929292;
+  background: #acacb394;
 }
 #keyboard #keypadNotes3 button{
-  background: #929292;
+  background: #acacb394;
 }
 
 #keypadNotes1{
      font-size: 40px;
      padding: 5px 0px;
      opacity: 0.7;
-     color: #2c4f99;
+     color: #ffffff;
 
 }
 
@@ -159,15 +159,14 @@ textarea {
   font-size: 40px;
   padding: 5px 0px;
   opacity: 0.7;
-  color: #2c4f99;
-
+  color: #fdfdfd;
 }
 
 #keypadNotes3{
   font-size: 40px;
   padding: 5px 0px;
   opacity: 0.7;
-  color: #2c4f99;
+  color:#ffffff;
 }
 
 #playButton{
@@ -175,8 +174,8 @@ textarea {
   margin-left: 16%;
   width: 35%;
   opacity: 0.7;
-  color: #2c4f99;
-  background: #929292;
+  color: #f3f3f3;
+  background: #acacb394;
 }
 
 #record{
@@ -185,11 +184,11 @@ textarea {
 }
 
 #notes .wrapper{
-  border: 17px solid #909090;
+  border: 17px solid #93949c;
   border-style: groove;
   display: flex;
   justify-content: space-evenly;
-  background: #000000e6;
+  background: #20297de6;
   margin: 10% 5%;
 }
 #record:active {
@@ -207,8 +206,8 @@ textarea {
   top: 5px;
 }
 .keyboard-selector{
-  background: #373a42;
-    color: #2b6fef;
+  background: #5e5e6d;
+  color: #c3bcbc;
 }
 
 .inactive{
@@ -248,7 +247,7 @@ textarea {
   width: 25px;
   height: 68px;
   padding-top: 20px;
-  border: 7px solid #626eec;
+  border: 7px solid #9b9ca7;
   border-style: ridge;
 }
 
