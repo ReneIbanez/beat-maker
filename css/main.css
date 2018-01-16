@@ -100,7 +100,7 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
-#category button{
+#category section button{
        padding: 22px 0px;
        margin-left: 40px;
        float: left;
@@ -113,6 +113,12 @@ textarea {
      background-color: #2b6fef;;
      color: white;
      margin-left: 30px;
+}
+#category section{
+
+  width: 90%;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 #category{
