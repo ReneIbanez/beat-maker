@@ -110,7 +110,7 @@ textarea {
        border: none;
 }
 #category button:hover {
-     background-color: #2b6fef;;
+     background-color: #9c63269e;
      color: white;
      margin-left: 30px;
 }
@@ -315,12 +315,14 @@ iframe{
   width: 90%;
 }
 input{
+    background: #5e5d6c;
+    color: #2b42ac;
     line-height: normal;
     display: inline-block;
     text-align: center;
     float: left;
-    margin:  50px 0px 0px 26%;
-    font-size: 28px;
+    margin:  57px 0px 0px 40%;
+    font-size: 35px;
     padding: 10px 20px;
 }
 
