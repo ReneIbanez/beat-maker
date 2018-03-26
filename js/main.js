@@ -72,8 +72,6 @@ function playSound(fileName){
       }
     }
 });
-
-
 //container
 let keyboard_profiles = {}
 //profile objects... q,w,e,ext properties
@@ -274,6 +272,7 @@ keyboard_profiles.Funfile_keyboard = {
   M : 'fun-file/excessiv.mp3',
 }
 
+//default starts on this keyboard everytime the page renders
 var active_keyboard = 'lil_bit_keyboard';
 //profile for my keyboard. so the catagory you select is what plays
 $(".keyboard-selector").on("click",function(e){
@@ -284,7 +283,7 @@ $(".keyboard-selector").on("click",function(e){
   active_keyboard = keyboard_profile;
 });
 
-//setting up an event litiner on a keydown event
+//setting up an event Listener on a keydown event
 $(document).keydown(function(e) {
   //e.which is charictor code and we turn it into string, and it gets stored in a veriable key
   var key = String.fromCharCode(e.which)
@@ -324,7 +323,8 @@ function ensure_track(track_id){
       if(tracks[i].track_id == track_id)
         track_ref = tracks[i]
     }
-  }//if not track length or if theirs no track on the line of code 324 -327 then its know tomake a new =one
+  }
+  //if not track length or if theirs no track on the line of code 324 -327 then its know tomake a new =one
   // if the tracks array is empty or if we didnt find a track with the desired track id in the loop above, we make a new one
   if(!tracks.length || !track_ref){
     let new_track = {
