@@ -1,4 +1,3 @@
-// var activeBox = box1;
 var metronome_beat = []
 var tracks = [];
 var resolution = 20;
@@ -11,12 +10,12 @@ var beatInterval;
 var note = 0;
 var beginning = Date.now()
 var currentBeatTime =(Date.now()- beginning)%16000;
+
 // all this is doing setting the math
 var getCurrentBeat = ()=>
   (Date.now()- beginning)%16000;
 
-// set your bpm
-// set the tempo
+  // set your bpm , set the tempo
 $("#bpm").on("input",function(){
   clearInterval(metronome);
   bpm = $("#bpm").val();
@@ -24,9 +23,8 @@ $("#bpm").on("input",function(){
   //  setInterval(updateMetronome, (60000/bpm));
 });
 
-//this is the metronome bar
+//this is the metronome bar, (sounds,color)
 function updateMetronome(){
-  // console.log("hi");
   $("#note"+ beat).toggleClass("metronomeActive");
    playSound("sounds/clap-hit:bings/hihat-808.wav");
   $("#metronome").css("background-color","null");
@@ -35,11 +33,9 @@ function updateMetronome(){
     if(beat ==16){
        beat = 0;
     }
-
 }
 
 function playBeats(){
-
   var time = getCurrentBeat()
   var beatsToPlay = metronome_beat.filter(beat => {
     return beat.time > time && beat.time < time + resolution;
@@ -58,7 +54,7 @@ function playSound(fileName){
   sound.play();
 
 }
-  //if spacebar is pressed, start
+  //if spacebar is pressed, start metronome
   $(document).keydown(function(e){
     if(e.which== 32){
   // console.log("metronome",metronome)
